@@ -4,6 +4,7 @@ import com.shardingtable.core.ShardKeyConfig;
 import com.shardingtable.core.annotation.Prototype;
 import com.shardingtable.core.combiner.ShardValueConvertValuesCombiner;
 import com.shardingtable.core.convertor.ShardValueConvertor;
+import com.shardingtable.core.exceptions.ShardValueConvertNullResultException;
 
 import java.util.List;
 import java.util.Map;
@@ -31,16 +32,24 @@ public class UniversalShardStrategy implements ShardStrategy {
         this.keyConfigs = keyConfigs;
         this.shardFiledValuesCombinerClass = shardFiledValuesCombiner;
         this.connector = connector;
-    }
 
-    @Override
-    public String actualTableName() {
+        // Check
         if (logicTable == null || logicTable.isEmpty()) {
             throw new IllegalArgumentException("logic table name is required");
         }
         if (keyConfigs == null || keyConfigs.isEmpty()) {
-            throw new IllegalArgumentException("shardFields is required");
+            throw new IllegalArgumentException("shardFields are required");
         }
+        if (shardFiledValuesCombiner == null) {
+            throw new IllegalArgumentException("combiner is required");
+        }
+        if (connector == null) {
+            throw new IllegalArgumentException("connector is required");
+        }
+    }
+
+    @Override
+    public String actualTableName() {
         ShardValueConvertValuesCombiner shardFiledValuesCombiner;
         if (shardFiledValuesCombinerClass.isAnnotationPresent(Prototype.class)) {
             try {
@@ -76,7 +85,11 @@ public class UniversalShardStrategy implements ShardStrategy {
                     }
                 });
             }
-            return shardValueConvertor.convert(shardKeyConfig.getValue(), shardKeyConfig.getRule());
+            String convertResult = shardValueConvertor.convert(shardKeyConfig.getValue(), shardKeyConfig.getRule());
+            if (convertResult == null) {
+                throw new ShardValueConvertNullResultException("The conversion result for field " + shardKeyConfig.getField() + " is null");
+            }
+            return convertResult;
         }).toArray(String[]::new));
     }
 
