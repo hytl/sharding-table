@@ -1,8 +1,8 @@
-package com.shardingtable.core.first;
+package com.hytl.shardingtable.core.first;
 
-import com.shardingtable.core.annotation.UniversalShard;
-import com.shardingtable.core.annotation.UniversalShard.ShardField;
-import com.shardingtable.core.convertor.LocalDateTimeConvertor;
+import com.hytl.shardingtable.core.annotation.UniversalShard;
+import com.hytl.shardingtable.core.annotation.UniversalShard.ShardField;
+import com.hytl.shardingtable.core.convertor.LocalDateTimeConvertor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

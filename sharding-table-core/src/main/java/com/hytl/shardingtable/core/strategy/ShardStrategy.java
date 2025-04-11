@@ -1,4 +1,4 @@
-package com.shardingtable.core.strategy;
+package com.hytl.shardingtable.core.strategy;
 
 /**
  * 分表策略

@@ -1,7 +1,7 @@
-package com.shardingtable.core.first;
+package com.hytl.shardingtable.core.first;
 
-import com.shardingtable.core.ShardAnnotationProcessor;
-import com.shardingtable.core.strategy.ShardStrategy;
+import com.hytl.shardingtable.core.ShardAnnotationProcessor;
+import com.hytl.shardingtable.core.strategy.ShardStrategy;
 import org.junit.Test;
 
 import java.time.LocalDateTime;

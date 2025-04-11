@@ -1,9 +1,9 @@
-package com.shardingtable.core;
+package com.hytl.shardingtable.core;
 
 
-import com.shardingtable.core.annotation.UniversalShard;
-import com.shardingtable.core.strategy.ShardStrategy;
-import com.shardingtable.core.strategy.UniversalShardStrategy;
+import com.hytl.shardingtable.core.annotation.UniversalShard;
+import com.hytl.shardingtable.core.strategy.ShardStrategy;
+import com.hytl.shardingtable.core.strategy.UniversalShardStrategy;
 
 import java.util.Arrays;
 import java.util.List;

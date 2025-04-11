@@ -1,4 +1,4 @@
-package com.shardingtable.core.exceptions;
+package com.hytl.shardingtable.core.exceptions;
 
 /**
  * 分表键值转换Null结果Exception

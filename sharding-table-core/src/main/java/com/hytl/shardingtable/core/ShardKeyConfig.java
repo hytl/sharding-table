@@ -1,6 +1,6 @@
-package com.shardingtable.core;
+package com.hytl.shardingtable.core;
 
-import com.shardingtable.core.convertor.ShardValueConvertor;
+import com.hytl.shardingtable.core.convertor.ShardValueConvertor;
 
 /**
  * 配置载体
